@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:test_flutter_in_kali_linux/View/Screens/home.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/adminUser/blocked_users.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/adminUser/home.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/adminUser/users.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/driverUser/home.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/driverUser/map_screen.dart';
 
-import 'package:test_flutter_in_kali_linux/View/Screens/login.dart';
-import 'package:test_flutter_in_kali_linux/View/Screens/map_screen.dart';
-import 'package:test_flutter_in_kali_linux/View/Screens/profile.dart';
-import 'package:test_flutter_in_kali_linux/View/Screens/record_request.dart';
-import 'package:test_flutter_in_kali_linux/View/Screens/signup.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/Auth/login.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/home.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/map_screen.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/profile.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/Auth/signup.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/record_request.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,10 +31,15 @@ class MyApp extends StatelessWidget {
             routes: {
               "login": (context) => const Login(),
               "signup": (context) => const SignUp(),
-              "userhome": (context) => const UserHome(),
+              "userHome": (context) => const UserHome(),
+              "driverHome": (context) => const DriverHome(),
+              "adminHome": (context) => const AdminHome(),
+              "users": (context) => const Users(),
+              "blockedUsers": (context) => const BlockedUsers(),
               "profile": (context) => const Profile(),
-              "recordRequest": (context) => const RecordRequest(),
-              "mapScreen": (context) => const MapScreen(),
+              "recordRequest": (context) => const UserRecordRequest(),
+              "usermapScreen": (context) => const UserMapScreen(),
+              "drivermapScreen": (context) => const DriverMapScreen(),
             },
             builder: (context, child) {
               final originalTextScaleFactor = MediaQuery.of(context).textScaler;
@@ -46,6 +56,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             color: Colors.white,
             theme: ThemeData(
+                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                    backgroundColor: Colors.white),
+                dialogBackgroundColor: Colors.white,
                 scaffoldBackgroundColor: Colors.white,
                 appBarTheme: const AppBarTheme(
                   systemOverlayStyle: SystemUiOverlayStyle(

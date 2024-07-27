@@ -1,16 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/switchgridtile.dart';
 
-class MapScreen extends StatefulWidget {
-  const MapScreen({super.key});
+class UserMapScreen extends StatefulWidget {
+  const UserMapScreen({super.key});
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  State<UserMapScreen> createState() => _UserMapScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _UserMapScreenState extends State<UserMapScreen> {
   @override
   Widget build(BuildContext context) {
     bool switchMajorvalue = false;
@@ -56,7 +57,41 @@ class _MapScreenState extends State<MapScreen> {
                           borderRadius: BorderRadius.circular(12.r)),
                       height: 55.h,
                       color: Colors.deepOrange,
-                      onPressed: () {},
+                      onPressed: () {
+                        showCupertinoDialog(
+                            context: context,
+                            builder: (context) {
+                              return CupertinoAlertDialog(
+                                title: Text(
+                                  "Alert",
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                                content: const Text(
+                                  "Do you want to complete the Case?",
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(
+                                      "close",
+                                      style: TextStyle(fontSize: 16.sp),
+                                    ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text(
+                                      "Confirm",
+                                      style: TextStyle(fontSize: 16.sp),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            });
+                      },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -106,7 +141,7 @@ class _MapScreenState extends State<MapScreen> {
                 ],
               ),
               SizedBox(
-                height: 25.h,
+                height: 15.h,
               )
             ],
           ),

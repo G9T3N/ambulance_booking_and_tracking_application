@@ -4,8 +4,8 @@ import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/btn.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/record_card.dart';
 
-class RecordRequest extends StatelessWidget {
-  const RecordRequest({super.key});
+class UserRecordRequest extends StatelessWidget {
+  const UserRecordRequest({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

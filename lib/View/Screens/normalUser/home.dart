@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_flutter_in_kali_linux/Controller/home_controller.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/btn.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class UserHome extends StatelessWidget {
+class UserHome extends StatefulWidget {
   const UserHome({
     super.key,
   });
+
+  @override
+  State<UserHome> createState() => _UserHomeState();
+}
+
+class _UserHomeState extends State<UserHome> {
   @override
   Widget build(BuildContext context) {
-    callNumber() async {
-      const number = '1122'; //set the number here
-      bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+    // callNumber() async {
+    //   const number = '1122'; //set the number here
+    //   bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+    // }
+    void openPhone() async {
+      Uri phoneno = Uri.parse('tel:1122');
+      if (await launchUrl(phoneno)) {
+        //dialer opened
+      } else {
+        //dailer is not opened
+      }
     }
 
     return Scaffold(
@@ -22,11 +36,11 @@ class UserHome extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12.0.w),
           child: Column(
             children: [
-              const MYAppbar(), 
+              const MYAppbar(),
               SizedBox(height: 20.h),
               Expanded(
                 flex: 4,
-            child: GridView(
+                child: GridView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -40,7 +54,7 @@ class UserHome extends StatelessWidget {
                         (int index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed("mapScreen");
+                          Navigator.of(context).pushNamed("usermapScreen");
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -77,7 +91,8 @@ class UserHome extends StatelessWidget {
                   btnText: "1122 Call",
                   textStyle: Theme.of(context).textTheme.bodyMedium!,
                   onPressed: () {
-                    callNumber();
+                    // callNumber();
+                    openPhone();
                   }),
               SizedBox(height: 50.h),
               Expanded(
@@ -90,7 +105,7 @@ class UserHome extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r)),
                         color: Colors.deepOrange,
-                        height: 55.h,
+                        height: 50.h,
                         onPressed: () {
                           Navigator.of(context).pushNamed("recordRequest");
                         },
@@ -112,7 +127,7 @@ class UserHome extends StatelessWidget {
                             ),
                             Positioned(
                                 right: 5.w,
-                                top: -30.h,
+                                top: -33.h,
                                 child: Container(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(25.r),
@@ -141,7 +156,7 @@ class UserHome extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r)),
                         color: Colors.deepOrange,
-                        height: 55.h,
+                        height: 50.h,
                         onPressed: () {
                           Navigator.of(context).pushNamed("profile");
                         },

@@ -66,7 +66,10 @@ class Profile extends StatelessWidget {
               AppButton(
                   btnText: "LOGOUT",
                   textStyle: Theme.of(context).textTheme.bodyMedium!,
-                  onPressed: () {})
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  })
             ],
           ),
         ),

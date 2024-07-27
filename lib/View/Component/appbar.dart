@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MYAppbar extends StatelessWidget {
-  const MYAppbar({super.key});
+  final String? title;
+  const MYAppbar({super.key, this.title});
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
             child: Text(
-          "BOOK AN \nAMBULACNNCE",
+          title ?? "BOOK AN \nAMBULACNNCE",
           style: Theme.of(context).textTheme.bodyLarge,
         )),
         Image.asset(

@@ -4,8 +4,17 @@ import 'package:test_flutter_in_kali_linux/Controller/Auth/login_controller.dart
 import 'package:test_flutter_in_kali_linux/View/Component/btn.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/text_field.dart';
 
-class Login extends StatelessWidget {
+String? selectedRoll;
+
+class Login extends StatefulWidget {
   const Login({super.key});
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  List roll = ["Admin", "Driver", "user"];
 
   @override
   Widget build(BuildContext context) {
@@ -60,18 +69,55 @@ class Login extends StatelessWidget {
                 child: Text(
                   textAlign: TextAlign.right,
                   "Forget Password?",
-                  style:
-                      TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(
-                height: 35.h,
+                height: 10.h,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.deepOrange,
+                    borderRadius: BorderRadius.circular(12)),
+                child: DropdownButton(
+                  dropdownColor: Colors.deepOrange,
+                  itemHeight: 50.h,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  isExpanded: true,
+                  hint: Text(
+                    "Select Roll",
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  value: selectedRoll,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedRoll = value.toString();
+                    });
+                  },
+                  items: roll.map((valueItem) {
+                    return DropdownMenuItem(
+                        value: valueItem, child: Text(valueItem));
+                  }).toList(),
+                ),
+              ),
+              SizedBox(
+                height: 10.h,
               ),
               AppButton(
                 btnText: "LOGIN",
                 textStyle: Theme.of(context).textTheme.bodyMedium!,
                 onPressed: () {
-                  Navigator.of(context).pushNamed('userhome');
+                  if (selectedRoll == "Admin") {
+                    Navigator.of(context).pushNamed('adminHome');
+                  } else if (selectedRoll == "Driver") {
+                    Navigator.of(context).pushNamed('driverHome');
+                  } else {
+                    Navigator.of(context).pushNamed('userHome');
+                  }
                 },
               ),
               SizedBox(
