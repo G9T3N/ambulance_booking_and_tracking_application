@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -182,10 +181,12 @@ class _RecordCardState extends State<RecordCard> {
                                 color: Colors.deepOrange,
                                 disabledColor: Colors.deepOrange,
                                 height: 50.h,
-                                onPressed: () {
-                                  Navigator.of(context)
-                                      .pushNamed("drivermapScreen");
-                                },
+                                onPressed: widget.emergencyStatus == "NEW"
+                                    ? () {}
+                                    : () {
+                                        Navigator.of(context)
+                                            .pushNamed("drivermapScreen");
+                                      },
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,

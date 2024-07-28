@@ -13,30 +13,8 @@ class AdminHome extends StatefulWidget {
 class _AdminHomeState extends State<AdminHome> {
   @override
   Widget build(BuildContext context) {
-    int currentIndex = 1;
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          fixedColor: Colors.red,
-          unselectedIconTheme: const IconThemeData(color: Colors.red),
-          currentIndex: currentIndex,
-          onTap: (value) {
-            setState(() {});
-            currentIndex = value;
-          },
-          items: const [
-            BottomNavigationBarItem(
-              label: "Home",
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: "Users",
-              icon: Icon(Icons.person),
-            ),
-            BottomNavigationBarItem(
-              label: "Blocked",
-              icon: Icon(Icons.person_off_rounded),
-            ),
-          ]),
+
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(

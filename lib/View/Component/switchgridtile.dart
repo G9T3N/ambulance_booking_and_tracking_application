@@ -5,8 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SwitchGridTile extends StatefulWidget {
   final String switchTitle;
   final bool value;
+  final void Function(bool)? onChange;
   const SwitchGridTile(
-      {super.key, required this.switchTitle, required this.value});
+      {super.key,
+      required this.switchTitle,
+      required this.value,
+      this.onChange});
 
   @override
   State<SwitchGridTile> createState() => _SwitchGridTileState();
@@ -15,8 +19,6 @@ class SwitchGridTile extends StatefulWidget {
 class _SwitchGridTileState extends State<SwitchGridTile> {
   @override
   Widget build(BuildContext context) {
-    bool switchVal = false;
-    switchVal = widget.value;
     return Row(
       children: [
         Text(
@@ -26,13 +28,7 @@ class _SwitchGridTileState extends State<SwitchGridTile> {
         SizedBox(
           width: 15.w,
         ),
-        CupertinoSwitch(
-          value: switchVal,
-          onChanged: (val) {
-            switchVal = val;
-            setState(() {});
-          },
-        )
+        CupertinoSwitch(value: widget.value, onChanged: widget.onChange)
       ],
     );
   }

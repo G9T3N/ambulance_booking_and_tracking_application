@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -12,11 +14,19 @@ class UserMapScreen extends StatefulWidget {
 }
 
 class _UserMapScreenState extends State<UserMapScreen> {
+  File? file;
+  getImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? photo = await picker.pickImage(source: ImageSource.camera);
+    file = File(photo!.path);
+    setState(() {});
+  }
+
+  bool switchMajorvalue = false;
+  bool switchMinorvalue = false;
+  bool takePhoto = false;
   @override
   Widget build(BuildContext context) {
-    bool switchMajorvalue = false;
-    bool switchMinorvalue = false;
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -30,8 +40,22 @@ class _UserMapScreenState extends State<UserMapScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SwitchGridTile(switchTitle: "Major", value: switchMajorvalue),
-                  SwitchGridTile(switchTitle: "Minor", value: switchMinorvalue),
+                  SwitchGridTile(
+                    switchTitle: "Major",
+                    value: switchMajorvalue,
+                    onChange: (val) {
+                      switchMajorvalue = val;
+                      setState(() {});
+                    },
+                  ),
+                  SwitchGridTile(
+                    switchTitle: "Minor",
+                    value: switchMinorvalue,
+                    onChange: (val) {
+                      switchMinorvalue = val;
+                      setState(() {});
+                    },
+                  ),
                 ],
               ),
               SizedBox(
@@ -42,6 +66,13 @@ class _UserMapScreenState extends State<UserMapScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(color: Colors.red),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Image.asset(
+                      "assets/images/map.png",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -57,41 +88,46 @@ class _UserMapScreenState extends State<UserMapScreen> {
                           borderRadius: BorderRadius.circular(12.r)),
                       height: 55.h,
                       color: Colors.deepOrange,
-                      onPressed: () {
-                        showCupertinoDialog(
-                            context: context,
-                            builder: (context) {
-                              return CupertinoAlertDialog(
-                                title: Text(
-                                  "Alert",
-                                  style: Theme.of(context).textTheme.bodyLarge,
-                                ),
-                                content: const Text(
-                                  "Do you want to complete the Case?",
-                                ),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text(
-                                      "close",
-                                      style: TextStyle(fontSize: 16.sp),
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Text(
-                                      "Confirm",
-                                      style: TextStyle(fontSize: 16.sp),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            });
-                      },
+                      onPressed: takePhoto == false
+                          ? () {}
+                          : () {
+                              showCupertinoDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return CupertinoAlertDialog(
+                                      title: Text(
+                                        "Alert",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyLarge,
+                                      ),
+                                      content: const Text(
+                                        "Do you want to complete the Case?",
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text(
+                                            "close",
+                                            style: TextStyle(fontSize: 16.sp),
+                                          ),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text(
+                                            "Confirm",
+                                            style: TextStyle(fontSize: 16.sp),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                              takePhoto = false;
+                            },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -110,7 +146,7 @@ class _UserMapScreenState extends State<UserMapScreen> {
                   SizedBox(
                     width: 10.w,
                   ),
-                  1 == 1
+                  takePhoto == false
                       //!button that take a photo for situation
                       ? MaterialButton(
                           minWidth: 80.w,
@@ -118,7 +154,11 @@ class _UserMapScreenState extends State<UserMapScreen> {
                               borderRadius: BorderRadius.circular(12.r)),
                           height: 55.h,
                           color: Colors.deepOrange,
-                          onPressed: () {},
+                          onPressed: () async {
+                            await getImage();
+                            takePhoto = true;
+                            setState(() {});
+                          },
                           child: Icon(
                             Icons.file_upload_outlined,
                             color: Colors.white,

@@ -112,7 +112,7 @@ class _LoginState extends State<Login> {
                 textStyle: Theme.of(context).textTheme.bodyMedium!,
                 onPressed: () {
                   if (selectedRoll == "Admin") {
-                    Navigator.of(context).pushNamed('adminHome');
+                    Navigator.of(context).pushNamed('BNB');
                   } else if (selectedRoll == "Driver") {
                     Navigator.of(context).pushNamed('driverHome');
                   } else {

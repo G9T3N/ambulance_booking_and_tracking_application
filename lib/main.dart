@@ -8,6 +8,7 @@ import 'package:test_flutter_in_kali_linux/View/Screens/driverUser/home.dart';
 import 'package:test_flutter_in_kali_linux/View/Screens/driverUser/map_screen.dart';
 
 import 'package:test_flutter_in_kali_linux/View/Screens/Auth/login.dart';
+import 'package:test_flutter_in_kali_linux/View/Screens/navigationbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/home.dart';
 import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/map_screen.dart';
 import 'package:test_flutter_in_kali_linux/View/Screens/normalUser/profile.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
               "adminHome": (context) => const AdminHome(),
               "users": (context) => const Users(),
               "blockedUsers": (context) => const BlockedUsers(),
+              "BNB":(context)=>const BNB(),
               "profile": (context) => const Profile(),
               "recordRequest": (context) => const UserRecordRequest(),
               "usermapScreen": (context) => const UserMapScreen(),
