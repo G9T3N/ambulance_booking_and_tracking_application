@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 
 class AppButton extends StatelessWidget {
   final String btnText;
@@ -17,7 +18,7 @@ class AppButton extends StatelessWidget {
       minWidth: double.infinity,
       elevation: 0,
       height: 50.h,
-      color: Colors.deepOrange,
+      color: AppColor.mainColor,
       onPressed: onPressed,
       child: Text(
         btnText,

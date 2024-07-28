@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_flutter_in_kali_linux/Controller/Auth/signup_controller.dart';
+import 'package:test_flutter_in_kali_linux/Core/Function/opencamera.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/btn.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/text_field.dart';
 
-class SignUp extends StatelessWidget {
+class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +72,7 @@ class SignUp extends StatelessWidget {
                       );
               }),
               ListTile(
-                tileColor: Colors.deepOrange,
+                tileColor: AppColor.mainColor,
                 leading: const Icon(Icons.list, color: Colors.white),
                 title: Text(
                   "Select your Districts",
@@ -75,7 +82,7 @@ class SignUp extends StatelessWidget {
                     alignment: Alignment.center,
                     borderRadius: BorderRadius.circular(12.r),
                     isExpanded: false,
-                    dropdownColor: Colors.deepOrange,
+                    dropdownColor: AppColor.mainColor,
                     items: [
                       ...List.generate(
                         SignupControllerImp.cities.length,
@@ -90,8 +97,10 @@ class SignUp extends StatelessWidget {
                         },
                       ),
                     ],
-                    value: 0,
-                    onChanged: (value) {},
+                    value: SignupControllerImp.city,
+                    onChanged: (value) {
+                      SignupControllerImp.city = value.toString();
+                    },
                     icon: const Icon(Icons.arrow_forward_ios_outlined,
                         color: Colors.white)),
               ),
@@ -107,7 +116,10 @@ class SignUp extends StatelessWidget {
                     child: AppButton(
                       btnText: "Upload your Personal CNIC",
                       textStyle: const TextStyle(color: Colors.white),
-                      onPressed: () {},
+                      onPressed: () async {
+                        await getImage();
+                        setState(() {});
+                      },
                     ),
                   ),
                 ],
@@ -118,7 +130,9 @@ class SignUp extends StatelessWidget {
               AppButton(
                 btnText: "SIGNUP",
                 textStyle: Theme.of(context).textTheme.bodyMedium!,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed("login");
+                },
               ),
               SizedBox(
                 height: 20.h,

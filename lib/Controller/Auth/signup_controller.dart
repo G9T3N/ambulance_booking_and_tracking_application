@@ -42,6 +42,7 @@ class SignupControllerImp extends SignUpController {
     Icons.remove_red_eye_outlined,
     Icons.location_on_sharp,
   ];
+  static String? city;
   @override
   signUp() {}
 

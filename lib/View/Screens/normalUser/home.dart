@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_flutter_in_kali_linux/Controller/home_controller.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/btn.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -59,7 +60,7 @@ class _UserHomeState extends State<UserHome> {
                         child: Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12.r),
-                              border: Border.all(color: Colors.deepOrange)),
+                              border: Border.all(color: AppColor.mainColor)),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -104,7 +105,7 @@ class _UserHomeState extends State<UserHome> {
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r)),
-                        color: Colors.deepOrange,
+                        color: AppColor.mainColor,
                         height: 50.h,
                         onPressed: () {
                           Navigator.of(context).pushNamed("recordRequest");
@@ -155,7 +156,7 @@ class _UserHomeState extends State<UserHome> {
                       child: MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.r)),
-                        color: Colors.deepOrange,
+                        color: AppColor.mainColor,
                         height: 50.h,
                         onPressed: () {
                           Navigator.of(context).pushNamed("profile");

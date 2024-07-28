@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 
 class AppTextField extends StatelessWidget {
   final String hintText;
@@ -28,7 +29,7 @@ class AppTextField extends StatelessWidget {
         ),
         suffixIcon: suffixWidget,
         filled: true,
-        fillColor: Colors.deepOrange,
+        fillColor: AppColor.mainColor,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(8),

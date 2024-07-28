@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 
 class DriverMapScreen extends StatefulWidget {
@@ -29,6 +30,13 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
                     borderRadius: BorderRadius.circular(12.r),
                     border: Border.all(color: Colors.red),
                   ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12.r),
+                    child: Image.asset(
+                      "assets/images/map.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
@@ -38,7 +46,7 @@ class _DriverMapScreenState extends State<DriverMapScreen> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.r)),
                 height: 55.h,
-                color: Colors.deepOrange,
+                color: AppColor.mainColor,
                 onPressed: () {
                   showCupertinoDialog(
                       context: context,

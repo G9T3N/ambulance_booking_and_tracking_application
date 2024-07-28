@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 
 class RecordCard extends StatefulWidget {
   final String name;
@@ -141,8 +142,8 @@ class _RecordCardState extends State<RecordCard> {
                             MaterialButton(
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12.r)),
-                              color: Colors.deepOrange,
-                              disabledColor: Colors.deepOrange,
+                              color: AppColor.mainColor,
+                              disabledColor: AppColor.mainColor,
                               height: 50.h,
                               onPressed: () {},
                               child: Row(
@@ -178,8 +179,8 @@ class _RecordCardState extends State<RecordCard> {
                               child: MaterialButton(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.r)),
-                                color: Colors.deepOrange,
-                                disabledColor: Colors.deepOrange,
+                                color: AppColor.mainColor,
+                                disabledColor: AppColor.mainColor,
                                 height: 50.h,
                                 onPressed: widget.emergencyStatus == "NEW"
                                     ? () {}
@@ -211,8 +212,8 @@ class _RecordCardState extends State<RecordCard> {
                               child: MaterialButton(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.r)),
-                                color: Colors.deepOrange,
-                                disabledColor: Colors.deepOrange,
+                                color: AppColor.mainColor,
+                                disabledColor: AppColor.mainColor,
                                 height: 50.h,
                                 onPressed: widget.onPressed,
                                 child: Row(

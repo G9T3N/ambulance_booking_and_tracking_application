@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/record_card.dart';
 
@@ -25,7 +26,7 @@ class BlockedUsers extends StatelessWidget {
                       EdgeInsets.symmetric(vertical: 2.h, horizontal: 16.w)),
                   shape: WidgetStatePropertyAll(BeveledRectangleBorder(
                       borderRadius: BorderRadius.circular(4.r))),
-                  backgroundColor: const WidgetStatePropertyAll(Colors.deepOrange),
+                  backgroundColor: const WidgetStatePropertyAll(AppColor.mainColor),
                   leading: const Icon(
                     Icons.search,
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:test_flutter_in_kali_linux/Controller/Auth/login_controller.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/btn.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/text_field.dart';
 
@@ -80,10 +81,10 @@ class _LoginState extends State<Login> {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.deepOrange,
+                    color: AppColor.mainColor,
                     borderRadius: BorderRadius.circular(12)),
                 child: DropdownButton(
-                  dropdownColor: Colors.deepOrange,
+                  dropdownColor: AppColor.mainColor,
                   itemHeight: 50.h,
                   style: Theme.of(context).textTheme.bodyMedium,
                   padding: EdgeInsets.symmetric(horizontal: 10.w),

@@ -1,8 +1,9 @@
-import 'dart:io';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:test_flutter_in_kali_linux/Core/Function/opencamera.dart';
+import 'package:test_flutter_in_kali_linux/Core/color/appcolors.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/appbar.dart';
 import 'package:test_flutter_in_kali_linux/View/Component/switchgridtile.dart';
 
@@ -14,14 +15,6 @@ class UserMapScreen extends StatefulWidget {
 }
 
 class _UserMapScreenState extends State<UserMapScreen> {
-  File? file;
-  getImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? photo = await picker.pickImage(source: ImageSource.camera);
-    file = File(photo!.path);
-    setState(() {});
-  }
-
   bool switchMajorvalue = false;
   bool switchMinorvalue = false;
   bool takePhoto = false;
@@ -87,7 +80,7 @@ class _UserMapScreenState extends State<UserMapScreen> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12.r)),
                       height: 55.h,
-                      color: Colors.deepOrange,
+                      color: AppColor.mainColor,
                       onPressed: takePhoto == false
                           ? () {}
                           : () {
@@ -153,7 +146,7 @@ class _UserMapScreenState extends State<UserMapScreen> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.r)),
                           height: 55.h,
-                          color: Colors.deepOrange,
+                          color: AppColor.mainColor,
                           onPressed: () async {
                             await getImage();
                             takePhoto = true;
